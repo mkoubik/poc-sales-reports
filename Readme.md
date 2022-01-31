@@ -12,8 +12,8 @@ It allows you to:
 - go to http://127.0.0.1:9000
 
 # Screenshots
-[generate payment bills](/docs/01_generate.png)
+![generate payment bills](/docs/01_generate.png)
 
-[see reports](/docs/02_reports.png)
+![see reports](/docs/02_reports.png)
 
-[run queries](/docs/03_query.png)
+![run queries](/docs/03_query.png)
