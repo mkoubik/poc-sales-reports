@@ -1,0 +1,17 @@
+application:
+    mapping:
+        *: [App, Modules\*, Presenters\*Presenter]
+
+di:
+    export:
+        parameters: no
+        tags: no
+
+extensions:
+    console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+
+services:
+    - App\Commands\GenerateCommand
+    - App\Model\Elastic\Indices\SalesIndex
+    - App\Router\RouterFactory::create()
+    - Elasticsearch\ClientBuilder::create()::SetHosts([elasticsearch])::build()

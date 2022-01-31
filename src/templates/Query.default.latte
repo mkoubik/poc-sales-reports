@@ -1,0 +1,13 @@
+{block content}
+<h2>Query</h2>
+{form queryForm}
+    <div class="form-group">
+        <pre>{input query class => form-control, rows => 20}</pre>
+    </div>
+    <button n:name="run" class="btn btn-primary">Run</button>
+{/form}
+
+{if $result}
+    <h2>Result</h2>
+    <pre><code>{$result|json}</code></pre>
+{/if}

@@ -1,0 +1,55 @@
+{block content}
+
+{var $aggregations = $result[aggregations]}
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h2 class="card-title">Total sales</h2>
+        <p class="card-text display-4">{$aggregations[total_sales][sum]|money}</p>
+        <p class="card-text display-4">{$aggregations[total_sales][count]} bills</p>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h2 class="card-title">Sales by day of week</h2>
+        <table class="table">
+            <tr n:foreach="$aggregations[by_day_of_week][buckets] as $bucket">
+                <th>{$bucket[key]}</th>
+                <td>{$bucket[sales][value]|money}</td>
+                <td>{$bucket[doc_count]} bills</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h2 class="card-title">Sales by months</h2>
+        <table class="table">
+            <tr n:foreach="$aggregations[by_day_of_week][buckets] as $bucket">
+                <th>{$bucket[key]}</th>
+                <td>{$bucket[sales][value]|money}</td>
+                <td>{$bucket[doc_count]} bills</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<p class="alert alert-info mb-3">Generated in {$seconds * 1000|number:3} ms</p>
+
+<div class="accordion">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h2 class="card-title">Query</h2>
+            <p class="card-text">{php dump($query)}</p>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h2 class="card-title">Result</h2>
+            <p class="card-text">{php dump($result)}</p>
+        </div>
+    </div>
+</div>
